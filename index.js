@@ -31,29 +31,34 @@ const Rover = (commands) => {
     }
 
     
-    const counter = (c) => {
-        if (c > 9) {
-            c = 0
-        } else if (c < 0) {
-            c = 9
+    const counter = () => {
+        if (x > 9) {
+            x = 0
+        } else if (x < 0) {
+            x = 9
+        } else  if (y > 9) {
+            y = 0
+        } else if (y < 0) {
+            y = 9
         } else {
-            c = c
+            x = x;
+            y = y;
         }
     }
 
     const movement = () => {
         if (facing === 'N' ) {
-            counter(y);
             y++;
+            
         } else if (facing === 'E') {
-            counter(x);
             x++;
+           
         }else if (facing === 'S') {
-            counter(y);
             y--;
+            
         } else if (facing === 'W') {
-            counter(x);
             x--;
+            
         }
     }
 
@@ -61,6 +66,7 @@ const Rover = (commands) => {
 
         if (i === 'M') {
             movement();
+            counter();
         } else if (i === 'L' ) {
             rotateLeft();
         } else if (i === 'R') {
