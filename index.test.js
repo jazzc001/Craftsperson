@@ -1,31 +1,36 @@
-const {Rover} = require('./index')
+const {Rover} = require('./index');
+
 
 describe('Rover', () => {
 
-    
-    test('starting position should face North', () => {
-        expect(Rover('')).toBe('0:0:N');
+    //Testing Rotation Behaviour
+    describe('Rotation Behaviour', () => {
+        const cases = [
+            ['0:0:N', ''], 
+            ['0:0:W', 'L'], 
+            ['0:0:S', 'LL'], 
+            ['0:0:E', 'LLL'], 
+            ['0:0:N', 'LLLL']
+        ]
+
+        test.each(cases)('return %s when rotation is %s', (expected, commands) => {
+            expect(Rover(commands)).toBe(expected);
+        })
     })
 
-    test('move one step', () => {
-        expect(Rover('M')).toBe('0:1:N');
+    //Testing Movement Behaviour
+    const cases = [
+        ['0:1:N', 'M'], 
+        ['1:0:E', 'RM']
+        // ['0:0:S', 'LM'], 
+        // ['0:0:E', 'LLL'], 
+        // ['0:0:N', 'LLLL']
+    ]
+
+    test.each(cases)('return %s when rotation is %s', (expected, commands) => {
+        expect(Rover(commands)).toBe(expected);
     })
 
-    test('Turn Left Once', () => {
-        expect(Rover('L')).toBe('0:0:W');
-    })
-
-    test('Turn Left Twice two times', () => {
-        expect(Rover('LL')).toBe('0:0:S');
-    })
-
-    test('Turn Left Three Times three times', () => {
-        expect(Rover('LLL')).toBe('0:0:E');
-    })
-
-    test('Turn Left Four Times', () => {
-        expect(Rover('LLLL')).toBe('0:0:N');
-    })
 
 
 })
