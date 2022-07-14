@@ -31,19 +31,7 @@ const Rover = (commands) => {
     }
 
     const movement = () => {
-        if (facing === 'N' ) {
-            y++;
-            
-        } else if (facing === 'E') {
-            x++;
-           
-        }else if (facing === 'S') {
-            y--;
-            
-        } else if (facing === 'W') {
-            x--;
-            
-        }
+        facing === 'N' ? y++ : (facing === 'E' ? x++ : (facing === 'S'? y-- :  x--));
     }
 
     commandArray.forEach((i) => {
