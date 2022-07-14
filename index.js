@@ -7,27 +7,11 @@ const Rover = (commands) => {
     let commandArray = commands.split('');
 
     const rotateLeft = () => {
-        if (facing === 'W') {
-            facing = 'S'
-        } else if ( facing === 'S') {
-            facing = 'E'
-        } else if (facing === 'E') {
-            facing = 'N'
-        } else {
-            facing = 'W'
-        }
+        facing === 'W' ?  facing = 'S' : (facing === 'S' ? facing = 'E' : (facing === 'E' ? facing = 'N' : facing = 'W'));
     }
 
     const rotateRight = () => {
-        if (facing === 'N') {
-            facing = 'E'
-        } else if ( facing === 'E') {
-            facing = 'S'
-        } else if (facing === 'S') {
-            facing = 'W'
-        } else {
-            facing = 'N'
-        }
+        facing === 'N' ? facing = 'E' : ( facing === 'E' ? facing = 'S' : (facing === 'S' ?   facing = 'W' : facing = 'N'));
     }
 
     
